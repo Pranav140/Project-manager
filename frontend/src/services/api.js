@@ -83,4 +83,24 @@ export const profileAPI = {
   }),
 };
 
+export const aiAPI = {
+  generateDescription: (data) => api.post('/ai/generate-description', data),
+  generateTaskSuggestions: (data) => api.post('/ai/task-suggestions', data),
+  analyzeProject: (id) => api.get(`/ai/analyze/${id}`),
+  generateProjectNames: (data) => api.post('/ai/generate-names', data),
+  smartSearch: (query) => api.get('/ai/smart-search', { params: { query } }),
+  generateReadme: (id) => api.get(`/ai/generate-readme/${id}`),
+  getInsights: () => api.get('/ai/insights'),
+};
+
+export const dnaAPI = {
+  generateDNA: (id) => api.get(`/dna/generate/${id}`),
+  timeTravel: (id) => api.get(`/dna/time-travel/${id}`),
+  analyzeHealth: (id) => api.get(`/dna/health/${id}`),
+  discoverRelationships: () => api.get('/dna/relationships'),
+  voiceToProject: (data) => api.post('/dna/voice-to-project', data),
+  predictViral: (id) => api.get(`/dna/viral-potential/${id}`),
+  getEcosystem: () => api.get('/dna/ecosystem'),
+};
+
 export default api;
