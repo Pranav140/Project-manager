@@ -60,39 +60,38 @@ A modern, full-stack project management application built with MongoDB, Express.
 
 ```
 project-manager/
-├── src/                      # Backend source
-│   ├── server.js            # Server entry point
-│   ├── app.js               # Express configuration
-│   ├── config/              # Configuration files
-│   ├── controllers/         # Business logic
-│   ├── models/              # Mongoose schemas
-│   ├── routes/              # API routes
-│   ├── middleware/          # Custom middleware
-│   ├── validators/          # Input validation
-│   └── utils/               # Utilities
-├── frontend/                # React application
-│   ├── public/              # Static files
-│   └── src/
-│       ├── components/      # React components (.jsx)
-│       ├── containers/      # Page components (.jsx)
-│       ├── actions/         # Redux actions
-│       ├── reducers/        # Redux reducers
-│       ├── store/           # Redux store
-│       └── style/           # CSS modules
-├── public/                  # Public assets
-│   └── images/              # Uploaded images
-├── ARCHITECTURE.md          # System architecture
-├── CHANGES.md               # Changelog
-└── package.json             # Dependencies
-
-Old structure (deprecated):
-├── bin/                     # ❌ Replaced by src/server.js
-├── app.js                   # ❌ Moved to src/app.js
-├── controllers/             # ❌ Moved to src/controllers/
-├── models/                  # ❌ Moved to src/models/
-├── routes/                  # ❌ Moved to src/routes/
-├── validations/             # ❌ Replaced by src/validators/
-└── uploadImages/            # ❌ Replaced by src/utils/
+├── backend/                 # Backend API (Node.js/Express)
+│   ├── server.js           # Server entry point
+│   ├── app.js              # Express configuration
+│   ├── config/             # Configuration files
+│   ├── controllers/        # Business logic
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # API routes
+│   ├── middleware/         # Custom middleware
+│   ├── validators/         # Input validation
+│   ├── utils/              # Utilities
+│   ├── public/             # Static files
+│   │   └── images/         # Uploaded images
+│   ├── package.json        # Backend dependencies
+│   └── README.md           # Backend documentation
+├── frontend/               # Frontend app (React)
+│   ├── public/             # Static files
+│   ├── src/
+│   │   ├── components/     # React components (.jsx)
+│   │   ├── containers/     # Page components (.jsx)
+│   │   ├── actions/        # Redux actions
+│   │   ├── reducers/       # Redux reducers
+│   │   ├── store/          # Redux store
+│   │   └── style/          # CSS modules
+│   ├── package.json        # Frontend dependencies
+│   └── README.md           # Frontend documentation
+├── assets/                 # Project screenshots
+├── .env.example            # Environment variables template
+├── package.json            # Root package.json (scripts)
+├── README.md               # This file
+├── ARCHITECTURE.md         # System architecture
+├── CHANGES.md              # Changelog
+└── BACKEND_MODERNIZATION.md # Backend migration guide
 ```
 
 ## 📋 Prerequisites
@@ -109,24 +108,30 @@ git clone https://github.com/Pranav140/Project-manager.git
 cd Project-manager
 ```
 
-2. **Install backend dependencies:**
+2. **Install all dependencies (backend + frontend):**
 ```bash
+npm run install-all
+```
+
+Or install separately:
+
+```bash
+# Backend
+cd backend
+npm install
+
+# Frontend
+cd ../frontend
 npm install
 ```
 
-3. **Install frontend dependencies:**
+3. **Create environment file:**
 ```bash
-cd frontend
-npm install
-cd ..
-```
-
-4. **Create environment file:**
-```bash
+cd backend
 cp .env.example .env
 ```
 
-5. **Configure environment variables in `.env`:**
+4. **Configure environment variables in `backend/.env`:**
 ```env
 MONGODB_URI=your_mongodb_connection_string
 PORT=8000
@@ -136,33 +141,41 @@ CLIENT_URL=http://localhost:3000
 
 ## 🚀 Running the Application
 
-### Development Mode
+### Development Mode (Recommended)
+
+**Option 1: Run both servers concurrently**
+```bash
+npm run dev:all
+# Backend runs on http://localhost:8000
+# Frontend runs on http://localhost:3000
+```
+
+**Option 2: Run servers separately**
 
 **Terminal 1 - Backend:**
 ```bash
-npm run dev
-# Server runs on http://localhost:8000
+npm run server
+# or: cd backend && npm run dev
 ```
 
 **Terminal 2 - Frontend:**
 ```bash
-cd frontend
-npm start
-# React app runs on http://localhost:3000
+npm run client
+# or: cd frontend && npm start
 ```
 
 ### Production Mode
 
 1. **Build frontend:**
 ```bash
-cd frontend
 npm run build
-cd ..
+# or: cd frontend && npm run build
 ```
 
 2. **Start server:**
 ```bash
 npm start
+# or: cd backend && npm start
 # Serves both API and React app on http://localhost:8000
 ```
 
@@ -260,10 +273,13 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed information.
 
 ## 📖 Documentation
 
+- [README.md](./README.md) - Main documentation (this file)
+- [backend/README.md](./backend/README.md) - Backend quick start
+- [backend/README_BACKEND.md](./backend/README_BACKEND.md) - Detailed backend docs
+- [frontend/README.md](./frontend/README.md) - Frontend documentation
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - System architecture overview
 - [CHANGES.md](./CHANGES.md) - Complete changelog
-- [frontend/README.md](./frontend/README.md) - Frontend documentation
-- [src/README.md](./src/README.md) - Backend documentation
+- [BACKEND_MODERNIZATION.md](./BACKEND_MODERNIZATION.md) - Backend migration guide
 
 ## 🧪 Testing
 
