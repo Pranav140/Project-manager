@@ -20,6 +20,9 @@ import {
   ProjectAnalysisModal,
   SmartSearchModal
 } from './AIFeatureModals';
+import AnimatedGradientMesh from './AnimatedGradientMesh';
+import ParticleBackground from './ParticleBackground';
+import FloatingShapes from './FloatingShapes';
 import { projectAPI } from '../services/api';
 import style from '../style/App.module.css';
 
@@ -50,6 +53,11 @@ const App = () => {
 
   return (
     <Router>
+      {/* Stunning Background Effects */}
+      <AnimatedGradientMesh />
+      <ParticleBackground />
+      <FloatingShapes />
+
       <Toaster
         position="top-right"
         toastOptions={{
@@ -59,6 +67,7 @@ const App = () => {
             color: '#fff',
             border: '1px solid rgba(102, 126, 234, 0.3)',
             borderRadius: '10px',
+            backdropFilter: 'blur(10px)',
           },
         }}
       />
