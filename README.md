@@ -1,11 +1,16 @@
-# 🚀 AI-Powered Project Management Tool
+# 🧬 Helix
 
-> **The world's most innovative project management platform** featuring revolutionary AI capabilities and stunning 3D visual effects that have never been seen before.
+> **Unwind your project's potential** - The world's most innovative project management platform featuring revolutionary AI capabilities and stunning 3D visual effects that have never been seen before.
 
 [![GitHub Stars](https://img.shields.io/github/stars/Pranav140/Project-manager?style=social)](https://github.com/Pranav140/Project-manager)
 [![GitHub Forks](https://img.shields.io/github/forks/Pranav140/Project-manager?style=social)](https://github.com/Pranav140/Project-manager)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+<div align="center">
+  <h3>🧬 Helix - Unwind Your Project's Potential</h3>
+  <p><i>Where AI meets project management excellence</i></p>
+</div>
 
 ---
 
@@ -453,10 +458,10 @@ It helps others discover this revolutionary project management tool.
 
 <div align="center">
 
-### 🚀 Built with Innovation, Powered by AI, Designed for the Future
+### 🧬 Helix - Built with Innovation, Powered by AI, Designed for the Future
 
 **Made with ❤️ using the MERN stack + Google Gemini AI**
 
-[⬆ Back to Top](#-ai-powered-project-management-tool)
+[⬆ Back to Top](#-helix)
 
 </div>
