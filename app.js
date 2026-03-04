@@ -18,8 +18,7 @@ var app = express();
 var mongoose = require('mongoose');
 var dev_db_url = process.env.MONGODB_URI;
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true}, () => console.log('MongoDB has connected successfully.'));
-mongoose.Promise = global.Promise;
+mongoose.connect(mongoDB).then(() => console.log('MongoDB has connected successfully.')).catch(err => console.error('MongoDB connection error:', err));
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -40,16 +39,14 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ["'self'", 'https://ka-f.fontawesome.com'], 
-        scriptSrc: ["'self'", "'unsafe-inline'", '*.fontawesome.com', 'https://use.fontawesome.com/releases/v5.15.4/js/all.js', 'https://kit.fontawesome.com',  'https://fonts.googleapis.com ', 'https://kit.fontawesome.com/d4de0f4540.js', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', 'https://code.jquery.com/jquery-3.5.1.slim.min.js'],
-        styleSrc: ["'self'", "'unsafe-inline'", '*.fontawesome.com', 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'],
-        imgSrc: ["*", 'data:'],
-        fontSrc: ["'self'", 'data:', '*.fontawesome.com', 'https://ka-f.fontawesome.com'],
-        connectSrc: ["'self'", '*.fontawesome.com', 'https://ka-f.fontawesome.com', 'https://ka-f.fontawesome.com/releases/v5.15.4/js/free-v4-shims.min.jsd', 'https://ka-f.fontawesome.com/releases/v5.15.4/js/free.min.js'],
-        frameSrc: ["'self'"],
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://kit.fontawesome.com", "https://cdn.jsdelivr.net"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://stackpath.bootstrapcdn.com"],
+        imgSrc: ["'self'", "data:", "https:"],
+        fontSrc: ["'self'", "data:", "https://ka-f.fontawesome.com"],
+        connectSrc: ["'self'", "https://ka-f.fontawesome.com"],
       },
-      reportOnly: false,
-    }
+    },
   })
 );
 app.use(compression());

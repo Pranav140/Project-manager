@@ -23,7 +23,103 @@ Things you may want to c<!--
 [![Issues][issues-shield]][issues-url] 
 ![Hireable](https://cdn.rawgit.com/hiendv/hireable/master/styles/default/yes.svg) 
 
-# Project-Management-Tool-MERN
+# Project Management Tool (MERN Stack)
+
+A full-stack project management application built with MongoDB, Express.js, React, and Node.js.
+
+## Features
+
+- Create and manage projects with details, status, and tech stacks
+- Organize projects by technology stacks
+- Track project progress with visual charts
+- Upload project images
+- User profile management
+- Responsive design with Bootstrap
+
+## Tech Stack
+
+**Frontend:**
+- React 18
+- Redux Toolkit for state management
+- React Router v6
+- React Bootstrap
+- Chart.js for data visualization
+
+**Backend:**
+- Node.js with Express
+- MongoDB with Mongoose
+- Multer for file uploads
+- Helmet for security
+- Express Validator
+
+## Prerequisites
+
+- Node.js (v16 or higher)
+- MongoDB (local or Atlas)
+- npm or yarn
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Pranav140/Project-manager.git
+cd Project-manager
+```
+
+2. Install backend dependencies:
+```bash
+npm install
+```
+
+3. Install frontend dependencies:
+```bash
+cd frontend
+npm install
+cd ..
+```
+
+4. Create a `.env` file in the root directory:
+```env
+MONGODB_URI=your_mongodb_connection_string
+PORT=8000
+```
+
+## Running the Application
+
+1. Start the backend server:
+```bash
+npm start
+```
+
+2. In a new terminal, start the frontend:
+```bash
+cd frontend
+npm start
+```
+
+The application will open at `http://localhost:3000`
+
+## Development
+
+- Backend runs on port 8000
+- Frontend runs on port 3000
+- Frontend proxies API requests to backend
+
+## API Endpoints
+
+- `GET /api/projects` - Get all projects
+- `POST /api/projects` - Create a new project
+- `GET /api/projects/:id` - Get project details
+- `PUT /api/projects/:id` - Update a project
+- `DELETE /api/projects/:id` - Delete a project
+- `GET /api/stacks` - Get all stacks
+- `POST /api/stacks` - Create a new stack
+- `GET /api/profile` - Get user profile
+- `PUT /api/profile` - Update user profile
+
+## License
+
+MIT
 
 >  A MERN project to manage all your personal projects, might be used as portfolio as well. Built with MERN stack and Redux.
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './NavBar';
 import Home from '../containers/Home';
 import StacksList from '../containers/StacksList';
@@ -15,37 +15,22 @@ import NoPageMatch from './NoPageMatch';
 import style from '../style/App.module.css';
 
 const App = () => (
-  /* <Router>
-    <Switch>
-      <>
-        <div className={style.content}>
-          <Route path="/" component={NavBar} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/stacks" component={StacksList} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/project/:name" component={ProjectDetail} />
-          <Route exact path="/stack/:name" component={StackDetail} />
-        </div>
-      </>
-    </Switch>
-  </Router> */
   <Router>
     <NavBar>    
-      <Switch>
-        <>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/projects" component={ProjectsList} />
-          <Route exact path="/stacks" component={StacksList} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/profile/update" component={ProfileForm} />
-          <Route exact path="/project/:name" component={ProjectDetail} />
-          <Route exact path="/project/:name/update" component={ProjectForm} />
-          <Route exact path="/projects/create" component={ProjectForm} />
-          <Route exact path="/stacks/create" component={StackForm} />
-          <Route exact path="/stack/:name" component={StackDetail} />
-          <Route exact path="/stack/:name/update" component={StackForm} />
-        </>
-      </Switch>    
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<ProjectsList />} />
+        <Route path="/stacks" element={<StacksList />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/update" element={<ProfileForm />} />
+        <Route path="/project/:name" element={<ProjectDetail />} />
+        <Route path="/project/:name/update" element={<ProjectForm />} />
+        <Route path="/projects/create" element={<ProjectForm />} />
+        <Route path="/stacks/create" element={<StackForm />} />
+        <Route path="/stack/:name" element={<StackDetail />} />
+        <Route path="/stack/:name/update" element={<StackForm />} />
+        <Route path="*" element={<NoPageMatch />} />
+      </Routes>    
     </NavBar>
   </Router>
 );
