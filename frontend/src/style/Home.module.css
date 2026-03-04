@@ -1,179 +1,303 @@
 
 .card2 {
-  border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-  box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   margin-bottom: 30px;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  position: relative;
+}
+
+.card2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.card2:hover::before {
+  left: 100%;
+}
+
+.card2:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.card2 .card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card2 h3 {
+  font-weight: 700;
+  font-size: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card2 span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .greybg {  
-  background-color: #F5F7FA;
-  color: black !important;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
-
 * {
--webkit-transition: .4s;
-transition: .4s;
+  transition: .3s ease;
 }
 
 a {
-text-decoration: none;
+  text-decoration: none;
 }
 
 .moviecard {
-background-image: url('https://wallpaperaccess.com/full/3222527.jpg');
-background-size: contain;
-background-position: -20% 80%;
-background-repeat: no-repeat;
-width: 75%;
-max-width: 800px;
-height: 300px;
-display: block;
-margin: 8vh auto;
-border-radius: 8px;
--webkit-box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.25);
-        box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.25);
+  background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 800px;
+  height: 350px;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.moviecard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.moviecard:hover::after {
+  opacity: 1;
+}
+
+.moviecard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.5);
 }
 
 .moviecard:nth-child(2) {
-background-image: url("https://wallpaperaccess.com/full/3222527.jpg");
-background-position: -20% 80%;
+  background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800");
 }
 
 .coloroverlay {
-width: 100%;
-height: 100%;
-border-radius: 8px;
-background: -webkit-gradient(linear, left top, right top, from(rgba(42, 159, 255, 0.2)), color-stop(60%, #212120), to(#212120));
-background: linear-gradient(to right, rgba(42, 159, 255, 0.2) 0%, #212120 60%, #212120 100%);
-background-blend-mode: multiply;
-padding: 1.2em;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(15, 15, 35, 0.7) 0%, rgba(26, 26, 46, 0.95) 60%, rgba(26, 26, 46, 0.98) 100%);
+  backdrop-filter: blur(5px);
+  padding: 2em;
+  position: relative;
+  z-index: 1;
 }
 
 h1, h2, h3 {
-font-family: "Montserrat", helvetica, arial, sans-serif;
-text-transform: uppercase;
-letter-spacing: 2px;
-line-height: 1;
-font-weight: 400;
+  font-family: "Inter", "Montserrat", helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
 .moviecontent {
-width: 40%;
-display: block;
-position: relative;
-float: right;
-padding-right: 1em;
+  width: 45%;
+  display: block;
+  position: relative;
+  float: right;
+  padding-right: 1.5em;
+  animation: slideInRight 0.6s ease-out;
 }
+
 .moviecontent .movietitle {
-color: #ffffff;
-margin-bottom: .25em;
-opacity: .75;
+  color: #ffffff;
+  margin-bottom: .5em;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
+
 .moviecontent .movieinfo {
-text-transform: uppercase;
-letter-spacing: 2px;
-font-size: .8em;
-color: #2a9fff;
-line-height: 1;
-margin: 0;
-font-weight: 700;
-opacity: .5;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: .85em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.4;
+  margin: 0 0 1.5em 0;
+  font-weight: 600;
 }
+
 .moviecontent .movieheader {
-margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
+
 .moviecontent .moviedesc {
-font-weight: 300;
-opacity: .84;
-margin-bottom: 2em;
-color: #2a9fff;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2em;
+  line-height: 1.6;
 }
 
 .btn2 {
-padding: .8em 2em;
-background-color: rgba(255, 255, 255, 0.2);
-color: white;
-}
-
-.btnoutline {
-background-color: transparent;
-border: 3px solid #ffffff;
-border-radius: 4px;
+  padding: .9em 2.2em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn2::before {
-font-family: 'Material Icons';
-vertical-align: middle;
-font-size: 1.5em;
-padding-right: .5em;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn2:hover::before {
+  left: 0;
+}
+
+.btnoutline {
+  background: transparent;
+  border: 2px solid #667eea;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
 }
 
 .btnoutline:hover {
-border-color: #2a9fff;
-color: #2a9fff;
--webkit-box-shadow: 0px 1px 8px 0px rgba(245, 199, 0, 0.2);
-        box-shadow: 0px 1px 8px 0px rgba(245, 199, 0, 0.2);
+  border-color: #764ba2;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
 }
 
 .movieshare {
-padding: 1em;
-display: inline-block;
-width: 25%;
+  padding: 1.5em;
+  display: inline-block;
+  width: 25%;
+  animation: slideInLeft 0.6s ease-out;
 }
 
 .movieshareicon {
-margin-left: .5em;
-color: white;
-mix-blend-mode: lighten;
-opacity: .4;
-font-size: 1.3em;
-margin-right: 0.5em;
+  margin-left: .5em;
+  color: white;
+  opacity: .6;
+  font-size: 1.4em;
+  margin-right: 0.8em;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
-.movieshareicon i:hover {
-color: red;
+.movieshareicon:hover {
+  opacity: 1;
+  transform: translateY(-3px) scale(1.1);
+  color: #667eea;
+  filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.5));
 }
 
 @media (max-width: 1000px) {
   .moviecontent {
-    width: 50%;
-    max-width: 95%;
+    width: 55%;
   }
 }
+
 @media (max-width: 800px) {
   .moviecard {
     width: 95%;
-    max-width: 95%;
+    height: 380px;
   }
 }
+
 @media (max-width: 600px) {
-  .moviecard, .moviecard:nth-child(2), .moviecard:nth-child(3) {
-    background-position: 50% 0%;
+  .moviecard, .moviecard:nth-child(2) {
+    background-position: center;
     background-size: cover;
-    height: 400px;
+    height: 450px;
   }
 
   .coloroverlay {
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(42, 159, 255, 0.2)), color-stop(60%, #212120), to(#212120));
-    background: linear-gradient(to bottom, rgba(42, 159, 255, 0.2) 0%, #212120 60%, #212120 100%);
+    background: linear-gradient(to bottom, rgba(15, 15, 35, 0.5) 0%, rgba(26, 26, 46, 0.95) 50%, rgba(26, 26, 46, 0.98) 100%);
   }
 
   .moviecontent {
-    margin-top: 4.2em;
+    margin-top: 5em;
     width: 90%;
+    float: none;
   }
 
   .movieshare {
     display: block;
     width: 100%;
+    padding: 1em;
   }
 }
 
-.fa-project-diagram {
-  font-size: 3em;
+.fa-project-diagram,
+.fa-laptop-code,
+.fa-user-tie,
+.fa-glasses,
+.fa-network-wired,
+.fa-terminal,
+.fa-pause {
+  font-size: 2.5em;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.card2:hover .fa-project-diagram,
+.card2:hover .fa-laptop-code,
+.card2:hover .fa-user-tie,
+.card2:hover .fa-glasses,
+.card2:hover .fa-network-wired,
+.card2:hover .fa-terminal,
+.card2:hover .fa-pause {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.progress {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  transition: width 1s ease;
 }

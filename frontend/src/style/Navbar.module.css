@@ -2,10 +2,12 @@
   display: flex;
   align-items: stretch;
   height: 100%;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
 }
 
 #content {
   width: 100% !important;
+  transition: all 0.3s ease;
 }
 
 #sidebar {
@@ -13,6 +15,22 @@
   max-width: 250px;
   min-height: 100vh;
   padding: 10px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+#sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .active {
@@ -29,55 +47,136 @@ a[data-toggle="collapse"] {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+a[aria-expanded="true"] .dropdown-toggle::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 #sidebar {
-  background: #212529;
   color: #fff;
-  transition: all 0.3s;
 }
 
 #sidebar .sidebarheader {
-  padding: 20px;
+  padding: 25px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: -10px -10px 20px -10px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+#sidebar .sidebarheader h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
 }
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #sidebar ul p {
   color: #fff;
-  padding: 10px;
+  padding: 12px 15px;
+  margin: 5px 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+#sidebar ul p:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateX(5px);
 }
 
 #sidebar ul li a {
-  padding: 10px;
-  font-size: 1.1em;
+  padding: 12px 15px;
+  font-size: 1em;
   display: block;
-  color: grey;
-}
-#sidebar ul li a:hover {
-  color: #212529;
-  background: rgb(165, 158, 158);
-  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  margin: 5px 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-  color: #fff;
-  background: #212529;
+#sidebar ul li a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
 }
+
+#sidebar ul li a:hover::before {
+  transform: scaleY(1);
+}
+
+#sidebar ul li a:hover {
+  color: #ffffff;
+  background: rgba(102, 126, 234, 0.15);
+  text-decoration: none;
+  transform: translateX(5px);
+  padding-left: 20px;
+}
+
+#sidebar ul li.active > a, 
+a[aria-expanded="true"] {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
+}
+
 ul ul a {
   font-size: 0.9em !important;
-  padding-left: 30px !important;
-  background: #212529;
+  padding-left: 35px !important;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+ul ul a:hover {
+  background: rgba(102, 126, 234, 0.1);
+  color: #ffffff;
+}
+
+/* Navbar Enhancements */
+.navbar {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  padding: 1rem 1.5rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
 }
 
 @media (max-width: 768px) {
   #sidebar {
-      margin-left: -250px;
+    margin-left: -250px;
   }
   #sidebar.active {
-      margin-left: 0;
+    margin-left: 0;
   }
 }

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner';
+import LoadingSpinner from '../components/LoadingSpinner';
 import HorizontalBarChart from '../components/HorizontalBarChart';
 import DonutChart from '../components/DonutChart';
 import { AllCall } from '../helpers/apiCalls';
@@ -38,7 +38,7 @@ function Home(props) {
     })();
   }, [getAll]);
   
-  return projects.length === 0 || stacks.length === 0 ? <div className="d-flex justify-content-center align-items-center w-100"><Spinner animation="grow" /></div> : (
+  return projects.length === 0 || stacks.length === 0 ? <LoadingSpinner /> : (
     <div className={`${style.greybg} container-fluid`}>
       <section id="minimal-statistics">
         <div className="row">
