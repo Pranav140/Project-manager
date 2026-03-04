@@ -1,8 +1,3 @@
-/**
- * Express Application Setup
- * Modern, clean, and organized
- */
-
 const express = require('express');
 const path = require('path');
 const helmet = require('helmet');
@@ -13,6 +8,8 @@ const morgan = require('morgan');
 // Middleware
 const errorHandler = require('./middleware/errorHandler');
 const notFound = require('./middleware/notFound');
+const { apiLimiter } = require('./middleware/rateLimiter');
+const logger = require('./middleware/logger');
 
 // Routes
 const apiRoutes = require('./routes');
@@ -51,15 +48,18 @@ app.use(compression());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 } else {
-  app.use(morgan('combined'));
+  app.use(logger.requestLogger);
 }
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Rate limiting
+app.use('/api/', apiLimiter);
+
 // Static files
-app.use('/public', express.static(path.join(__dirname, '../public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Serve React app in production
 if (process.env.NODE_ENV === 'production') {
@@ -72,7 +72,8 @@ app.get('/health', (req, res) => {
     status: 'success',
     message: 'Server is running',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV
   });
 });
 
